@@ -56,140 +56,150 @@ const studentsSchema = new mongoose.Schema(
 const Student = mongoose.model("Student", studentsSchema);
 //!=====CREATE OPERATION======
 //! ----.save()--------
-// const newUser = new User({
-//   username: "masynctech",
-//   age: 26,
-//   birthday: new Date("2001-04-15"),
-//   isActive: true,
-//   hobbies: ["Soccer", "Reading", "Coding"],
-//   address: {
-//     street: "789 0ak St",
-//     city: "Kumasi",
-//     postaclCode: 5551,
-//   },
-//   customdata: {
-//     country: "Ghana",
-//   },
-// });
+const newUser = new User({
+  username: "masynctech",
+  age: 26,
+  birthday: new Date("2001-04-15"),
+  isActive: true,
+  hobbies: ["Soccer", "Reading", "Coding"],
+  address: {
+    street: "789 0ak St",
+    city: "Kumasi",
+    postaclCode: 5551,
+  },
+  customdata: {
+    country: "Ghana",
+  },
+});
 
 // //! Save the doc
-// newUser
-//   .save()
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch((error) => console.log(error));
+newUser
+  .save()
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => console.log(error));
+
 //! ----.create()--------
-// User.create({
-//   username: "emmanuel",
-//   age: 26,
-//   birthday: new Date("2001-04-15"),
-//   isActive: true,
-//   hobbies: ["Soccer", "Reading", "Coding"],
-//   address: {
-//     street: "789 0ak St",
-//     city: "Kumasi",
-//     postaclCode: 5551,
-//   },
-//   customdata: {
-//     country: "Ghana",
-//   },
-// })
-//   .then((data) => console.log(data))
-//   .catch((err) => console.log(err));
+User.create({
+  username: "Masfir",
+  age: 23,
+  birthday: new Date("2002-12-12"),
+  isActive: true,
+  hobbies: ["Badminton", "Reading", "Coding"],
+  address: {
+    street: "Walet 11 St",
+    city: "South Tangerang",
+    postaclCode: 15555,
+  },
+  customdata: {
+    country: "Indonesia",
+  },
+})
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
 //! ----.insertMany()--------
-// User.insertMany([
-//   {
-//     username: "emmanuel",
-//     age: 26,
-//     birthday: new Date("2001-04-15"),
-//     isActive: true,
-//     hobbies: ["Soccer", "Reading", "Coding"],
-//     address: {
-//       street: "789 0ak St",
-//       city: "Kumasi",
-//       postaclCode: 5551,
-//     },
-//     customdata: {
-//       country: "Ghana",
-//     },
-//   },
-//   {
-//     username: "Prince",
-//     age: 28,
-//     birthday: new Date("2001-08-15"),
-//     isActive: true,
-//     hobbies: ["Basketball", "Jogging", "Coding"],
-//     address: {
-//       street: "789 0ak St",
-//       city: "Camp",
-//       postaclCode: 5551,
-//     },
-//     customdata: {
-//       country: "Ghana",
-//     },
-//   },
-// ])
-//   .then((data) => console.log(data))
-//   .catch((err) => console.log(err));
+User.insertMany([
+  {
+    username: "emmanuel",
+    age: 26,
+    birthday: new Date("2001-04-15"),
+    isActive: true,
+    hobbies: ["Soccer", "Reading", "Coding"],
+    address: {
+      street: "789 0ak St",
+      city: "Kumasi",
+      postaclCode: 5551,
+    },
+    customdata: {
+      country: "Ghana",
+    },
+  },
+  {
+    username: "Masfir",
+    age: 23,
+    birthday: new Date("2002-12-12"),
+    isActive: true,
+    hobbies: ["Badminton", "Jogging", "Coding"],
+    address: {
+      street: "Walet 11 St",
+      city: "South Tangerang",
+      postaclCode: 15555,
+    },
+    customdata: {
+      country: "Indonesia",
+    },
+  },
+])
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
 //! ----.find()--------
-// User.find()
-//   .then((data) => console.log(data))
-//   .catch((err) => console.log(err));
-//! ----.findOne()--------
-// User.findOne({
-//   username: "masynctech",
-// })
-//   .then((data) => console.log(data))
-//   .catch((err) => console.log(err));
+User.find()
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
+! ----.findOne()--------
+User.findOne({
+  username: "Masfir",
+})
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
 // //! ----.findById()--------
-// User.findById("652fcb47a0fc777e4baba1e5")
-//   .then((data) => console.log(data))
-//   .catch((err) => console.log(err));
+User.findById("652fcb47a0fc777e4baba1e5")
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
 //! ----.where()--------
-// const findUsers = async () => {
-//   try {
-//     const users = await User.find().where("age").gte(27);
-//     console.log(users);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// findUsers();
+const findUsers = async () => {
+  try {
+    const users = await User.find().where("age").gte(23);
+    console.log(users);
+  } catch (error) {
+    console.log(error);
+  }
+};
+findUsers();
+
 //! ----.sort()--------
-// const findUsers = async () => {
-//   try {
-//     const users = await User.find().sort({ username: -1 });
-//     console.log(users);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// findUsers();
+const findUsers = async () => {
+  try {
+    const users = await User.find().sort({ username: -1 });
+    console.log(users);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+findUsers();
+
 //! ----.limit()--------
-// const findUsers = async () => {
-//   try {
-//     const users = await User.find().limit(2);
-//     console.log(users);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// findUsers();
+const findUsers = async () => {
+  try {
+    const users = await User.find().limit(2);
+    console.log(users);
+  } catch (error) {
+    console.log(error);
+  }
+};
+findUsers();
+
 //! ----.chaining()--------
-// const findUsers = async () => {
-//   try {
-//     const users = await User.find()
-//       .where("age")
-//       .gte(27)
-//       .sort({ username: 1 })
-//       .limit(3);
-//     console.log(users);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// findUsers();
+const findUsers = async () => {
+  try {
+    const users = await User.find()
+      .where("age")
+      .gte(23)
+      .sort({ username: 1 })
+      .limit(3);
+    console.log(users);
+  } catch (error) {
+    console.log(error);
+  }
+};
+findUsers();
 
 // !----CREATE NEW USERS----
 const createStudent = async () => {
@@ -211,19 +221,19 @@ const createStudent = async () => {
   }
 };
 createStudent();
+
 // !------FETCH STUDENTS-----
 const findUsers1 = async () => {
   try {
     // !---$gt----
-    // const students = await Student.find({
-    //   age: { $gt: 25 },
-    // });
+    const students = await Student.find({
+      age: { $gt: 25 }, 
+    });
+    
     // !---where()----
-    // const students = await Student.find().where("premiumStudent").equals(true);
-    // console.log(students);
-    // !---where()----
-    // const students = await Student.find({ premiumStudent: true });
-    // console.log(students);
+    const students = await Student.find().where("premiumStudent").equals(true);
+    console.log(students);
+    
     // !---in()----
     const students = await Student.find({ age: { $in: [40, 90] } });
     console.log(students);
@@ -233,159 +243,166 @@ const findUsers1 = async () => {
 };
 // findUsers1();
 // !------FETCH STUDENTS-----
-// const findUsers = async () => {
-//   try {
-//     //! Exclude email, age, premiumStudent _id
-//     // const students = await Student.find({}, "-age -email -premiumStudent -_id");
-//     // !----using the select()----
-//     const students = await Student.find().select("name -_id");
-//     console.log(students);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// findUsers();
+const findUsers = async () => {
+  try {
+    //! Exclude email, age, premiumStudent _id
+    const students = await Student.find({}, "-age -email -premiumStudent -_id");
+    
+    // !----using the select()----
+    const students = await Student.find().select("name -_id");
+    console.log(students);
+  } catch (error) {
+    console.log(error);
+  }
+};
+findUsers();
 
 // !======UPDATING DOCUMENTS -----
 //!-----updateOne()--------
+const updateOneFn = async () => {
+  try {
+    const updatedStudent = await Student.updateOne(
+      { name: "Prince" },
+      { email: "prince2@gmail.com", age: 30 },
+      { new: true }
+    );
+    console.log(updatedStudent);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-// const updateOneFn = async () => {
-//   try {
-//     const updatedStudent = await Student.updateOne(
-//       { name: "Prince" },
-//       { email: "prince2@gmail.com", age: 30 },
-//       { new: true }
-//     );
-//     console.log(updatedStudent);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 // updateOneFn();
 //!-----findByIdAndUpdate()--------
+const updateDoc = async () => {
+  try {
+    const updatedStudent = await Student.findByIdAndUpdate(
+      "653104c135996c1e2f75a8c6",
+      { email: "bob2@gmail.com", age: 21, name: "Bob2" },
+      { new: true }
+    );
+    console.log(updatedStudent);
+  } catch (error) {
+    console.log(error);
+  }
+};
+updateDoc();
 
-// const updateDoc = async () => {
-//   try {
-//     const updatedStudent = await Student.findByIdAndUpdate(
-//       "653104c135996c1e2f75a8c6",
-//       { email: "bob2@gmail.com", age: 21, name: "Bob2" },
-//       { new: true }
-//     );
-//     console.log(updatedStudent);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// updateDoc();
-//!-----findByIdAndUpdate()--------
+//!-----updateMany()--------
 
-// const updateDoc = async () => {
-//   try {
-//     const updatedStudent = await Student.updateMany(
-//       { age: { $gt: 20 } },
-//       { premiumStudent: false },
-//       { new: true }
-//     );
-//     console.log(updatedStudent);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// updateDoc();
-//!-----findBOneAndUpdate()--------
+const updateDoc = async () => {
+  try {
+    const updatedStudent = await Student.updateMany(
+      { age: { $gt: 20 } },
+      { premiumStudent: false },
+      { new: true }
+    );
+    console.log(updatedStudent);
+  } catch (error) {
+    console.log(error);
+  }
+};
+updateDoc();
 
-// const updateDoc = async () => {
-//   try {
-//     const updatedStudent = await Student.findOneAndUpdate(
-//       { _id: "653104c135996c1e2f75a8c8" },
-//       { premiumStudent: true, name: "Emma" },
-//       { new: true }
-//     );
-//     console.log(updatedStudent);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// updateDoc();
+//!-----findOneAndUpdate()--------
+
+const updateDoc = async () => {
+  try {
+    const updatedStudent = await Student.findOneAndUpdate(
+      { _id: "653104c135996c1e2f75a8c8" },
+      { premiumStudent: true, name: "Emma" },
+      { new: true }
+    );
+    console.log(updatedStudent);
+  } catch (error) {
+    console.log(error);
+  }
+};
+updateDoc();
 
 // !======UPDATING DOCUMENTS -----
 //!-----update operators()--------
 const updateDoc = async () => {
   try {
     //Create the student
-    // await Student.create({
-    //   name: "Thomas",
-    //   age: 20,
-    //   subjects: ["Math"],
-    //   score: 85,
-    // });
+    await Student.create({
+      name: "Thomas",
+      age: 20,
+      subjects: ["Math"],
+      score: 85,
+    });
+    
     //! $set $unset
-    // const student = await Student.findOneAndUpdate(
-    //   { name: "Thomas" },
-    //   {
-    //     $set: { age: 23 },
-    //     $unset: { score: 1 },
-    //   },
-    //   { new: true }
-    // );
-    // console.log(student);
+    const student = await Student.findOneAndUpdate(
+      { name: "Thomas" },
+      {
+        $set: { age: 23 },
+        $unset: { score: 1 },
+      },
+      { new: true }
+    );
+    console.log(student);
+    
     //! $addToset $Push
-    //     const student = await Student.findOneAndUpdate(
-    //       { name: "Thomas" },
-    //       {
-    //          $addToSet: { subjects: "Physics" },
-    //         $push: { subjects: "Chemistry" },
-    //       },
-    //       { new: true }
-    //     );
-    //     console.log(student);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // updateDoc();
+        const student = await Student.findOneAndUpdate(
+          { name: "Thomas" },
+          {
+             $addToSet: { subjects: "Physics" },
+            $push: { subjects: "Chemistry" },
+          },
+          { new: true }
+        );
+        console.log(student);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updateDoc();
 
     //!----$inc $mul-----
-    //     const student = await Student.findOneAndUpdate(
-    //       { name: "Thomas" },
-    //       {
-    //         // $inc: { age: -10 },
-    //         $mul: { score: -2 },
-    //       },
-    //       { new: true }
-    //     );
-    //     console.log(student);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // updateDoc();
+        const student = await Student.findOneAndUpdate(
+          { name: "Thomas" },
+          {
+            $inc: { age: -10 },
+            $mul: { score: -2 },
+          },
+          { new: true }
+        );
+        console.log(student);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updateDoc();
+
     //!----$pop $pull-----
-    // const student = await Student.findOneAndUpdate(
-    //   { name: "Thomas" },
-    //   {
-    //     // $pop: { subjects: 1 },
-    //     $pull: { subjects: "Math" },
-    //   },
-    //   { new: true }
-    // );
-    // console.log(student);
+    const student = await Student.findOneAndUpdate(
+      { name: "Thomas" },
+      {
+        $pop: { subjects: 1 },
+        $pull: { subjects: "Math" },
+      },
+      { new: true }
+    );
+    console.log(student);
+
     //!----$min $max-----
-    //     const student = await Student.findOneAndUpdate(
-    //       { name: "Thomas" },
-    //       {
-    //         // $pop: { subjects: 1 },
-    //         // $min: { age: 18 },
-    //         $max: { age: 22 },
-    //       },
-    //       { new: true }
-    //     );
-    //     console.log(student);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // updateDoc();
+        const student = await Student.findOneAndUpdate(
+          { name: "Thomas" },
+          {
+            $pop: { subjects: 1 },
+            $min: { age: 18 },
+            $max: { age: 22 },
+          },
+          { new: true }
+        );
+        console.log(student);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updateDoc();
+
     //!----$currentDate----
     const student = await Student.findOneAndUpdate(
       { name: "Thomas" },
@@ -399,18 +416,18 @@ const updateDoc = async () => {
     console.log(error);
   }
 };
-// updateDoc();
+updateDoc();
 
 // !======DELETING DOCUMENTS -----
 
 const deleteDoc = async () => {
   try {
     //!-----findByIdAndDelete()--------
-    // const result = await Student.findByIdAndDelete("6532889484f00e012a4ed8f7");
-    // console.log(result);
+    const result = await Student.findByIdAndDelete("6532889484f00e012a4ed8f7");
+    console.log(result);
     //!-----findOneAndDelete()--------
-    // const result = await Student.findOneAndDelete({ name: "Alice" });
-    // console.log(result);
+    const result = await Student.findOneAndDelete({ name: "Alice" });
+    console.log(result);
     //!-----deleteMany()--------
     const result = await Student.deleteMany({ age: { $gt: 20 } });
     console.log(result);
