@@ -51,7 +51,14 @@ const isAuthenticated = (req, res, next) => {
 };
 
 //!-isAdmin (Authorization)
-const isAdmin = (req, res, next) => {};
+const isAdmin = (req, res, next) => {
+   const admin = req?.session?.userData?.role === "admin";
+  if (admin) {
+    return next();
+  } else {
+    res.send("Fobidden, access denied");
+  }
+};
 
 //Home Route
 app.get("/", (req, res) => {
